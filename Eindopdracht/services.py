@@ -1,7 +1,6 @@
 # Imports
-# External import: https://pypi.org/project/cryptocompare/
 import cryptocompare
-# Constants import from .gitignore
+# Constants import -> normally add this in .git ignore to protect the api key
 import os
 # email service
 import email_service
@@ -9,10 +8,6 @@ import email_service
 import datetime
 
 # variables
-# get the current time
-current_time = datetime.datetime.now()
-# format the current time to year, month, day, hour and min
-formatted_time = current_time.strftime("%Y-%m-%d %H:%M")
 # retrieve api key from windows variables
 api_key = os.environ.get('CRYPTOCOMPARE_API_KEY')
 
@@ -22,7 +17,7 @@ def set_api_key():
 
 
 # checks the current price of Ethereum
-def check_ethereum_price():
+def check_ethereum_price(formatted_time):
     # retrieve the Ethereum dictionary
     ethereum_price = cryptocompare.get_price('ETH')
     # print current Ethereum price with date time
@@ -44,9 +39,9 @@ def compare_ethereum_price(notification_amount, ethereum_price):
 
 
 # saves every interval the current Ethereum price
-def save_ethereum_price(ethereum_list, ethereum_price):
+def save_ethereum_price(ethereum_list, ethereum_price, formatted_time):
     # append Ethereum price to list
-    ethereum_list.append(ethereum_price)
+    ethereum_list.append((ethereum_price, formatted_time))
     return ethereum_list
 
 
@@ -54,8 +49,8 @@ def save_ethereum_price(ethereum_list, ethereum_price):
 def display_ethereum_prices_in_string(ethereum_price_list):
     price_list_string = ""
     # loop through the list and formats it as a string
-    for price in ethereum_price_list:
-        price_list_string += "\n" + str(price) + " EUR" + " | " + str(formatted_time) + " uur"
+    for price, time in ethereum_price_list:
+        price_list_string += "\n" + str(price) + " EUR" + " | " + str(time) + " uur"
     return price_list_string
 
 
