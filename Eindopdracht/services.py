@@ -4,8 +4,6 @@ import cryptocompare
 import os
 # email service
 import email_service
-# import currentime
-import datetime
 
 # variables
 # retrieve api key from windows variables
