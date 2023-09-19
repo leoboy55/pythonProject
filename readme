@@ -1,2 +1,7 @@
+goal: 
+As a crypto trader,
+I want to get notified when Ethereum price hits a specific price point,
+So I can decide to trade or not.
+
 external imports link
 https://pypi.org/project/cryptocompare/
