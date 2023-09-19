@@ -8,9 +8,9 @@ import datetime
 
 # variables
 # target amount
-notification_amount = 1200.00
+notification_amount = 1600.00
 # time in seconds when the main function should run again
-interval_time = 30
+interval_time = 3600
 ethereum_list = []
 
 
